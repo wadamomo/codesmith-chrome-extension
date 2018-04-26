@@ -1,0 +1,24 @@
+{
+  "manifest_version": 2,
+  "name": "CS Quizlet",
+  "version": "1.0",
+  "description": "Quizlet",
+  "content_scripts": [
+    {
+      "matches": ["https://www.youtube.com/*"],
+      "js": ["app.js", "questions.js"]
+    }
+  ],
+  "content_security_policy":"script-src 'self' https://apis.google.com; object-src 'self'",
+  "browser_action": {
+    "default_title": "Challenge Accepted!"
+  },
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  },
+  "icons": {
+    "16": "./photobluecrop.png",
+    "48": "./photobluecrop.png",
+    "128": "./photobluecrop.png"
+  }
+}
