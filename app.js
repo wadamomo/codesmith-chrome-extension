@@ -36,48 +36,68 @@ $(document).ready(function() {
             }); 
         }
     }
-
+  
     function memoryFlipTile(tile,val){
-        if(tile.innerHTML == "" && memory_values.length < 2){
-            tile.style.background = '#FFF';
-            tile.innerHTML = val;
-            if(memory_values.length == 0){
-                memory_values.push(val);
-                memory_tile_ids.push(tile.id);
-            } else if(memory_values.length == 1){
-                memory_values.push(val);
-                memory_tile_ids.push(tile.id);
-                if(memory_values[0] == memory_values[1]){
-                    tiles_flipped += 2;
-                    // Clear both arrays
-                    memory_values = [];
-                    memory_tile_ids = [];
-                    // Check to see if the whole board is cleared
-                    if(tiles_flipped == memory_array.length){
-                        alert("Board cleared... generating new board");
-                        document.getElementById('memory_board').innerHTML = "";
-                        newBoard();
-                    }
-                } else {
-                    function flip2Back(){
-                        // Flip the 2 tiles back over
-                        var tile_1 = document.getElementById(memory_tile_ids[0]);
-                        var tile_2 = document.getElementById(memory_tile_ids[1]);
-                        tile_1.style.background = 'url() no-repeat';
-                        tile_1.innerHTML = "";
-                        tile_2.style.background = 'url("https://images.unsplash.com/photo-1484244233201-29892afe6a2c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=2db8de5b9f0478ba59dfd9d61f4d64fe&auto=format&fit=crop&w=2550&q=80") no-repeat';
-                        tile_2.innerHTML = "";
-                        // Clear both arrays
-                        memory_values = [];
-                        memory_tile_ids = [];
-                    }
-                    setTimeout(flip2Back, 400);
-                }
-            }
-        }
+        if (tile.innerHTML == "" && memory_values.length < 2) {
+		console.log(`Set value: ${val}`);
+
+		if (memory_values.length == 0) {
+
+			memory_values.push(val);
+			memory_tile_ids.push(tile.id);
+
+		}
+		else if (memory_values.length == 1) {
+
+			memory_values.push(val);
+			memory_tile_ids.push(tile.id);
+
+			if (memory_values[0] == memory_values[1]) {
+
+				tiles_flipped += 2;
+
+				// Clear both arrays
+				memory_values = [];
+				memory_tile_ids = [];
+				
+				// Check to see if the whole board is cleared
+				if (tiles_flipped == memory_array.length) {
+					alert("Board cleared... generating new board");
+					document.getElementById('memory_board').innerHTML = "";
+					newBoard();
+				}
+			}
+			else {
+				console.log("BBB");
+				function flip2Back() {
+				    // Flip the 2 tiles back over
+				    var tile_1 = document.getElementById(memory_tile_ids[0]);
+				    var tile_2 = document.getElementById(memory_tile_ids[1]);
+				    tile_1.style.background = 'url() no-repeat';
+            	    tile_1.innerHTML = "";
+				    tile_2.style.background = 'url("https://images.unsplash.com/photo-1484244233201-29892afe6a2c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=2db8de5b9f0478ba59dfd9d61f4d64fe&auto=format&fit=crop&w=2550&q=80") no-repeat';
+            	    tile_2.innerHTML = "";
+				    // Clear both arrays
+				    memory_values = [];
+            	    memory_tile_ids = [];
+				}
+				setTimeout(flip2Back, 700);
+			}
+		}
+	}
     }
 
     newBoard();
 
+    document.getElementById('memory_board').innerHTML = output;
+    for(var j = 0; j < memory_array.length; j++){
+        document.getElementById("tile_"+j).addEventListener("click", function() {
+			console.log(`Flip this: ${this}`);
+            memoryFlipTile(this, memory_array[j])
+        }); 
+    }
+}
+    // renderCard("What is 1 + 1?", ["3", "Apple", "2", "Ten"], 2);
+newBoard();
 });
 
