@@ -7,7 +7,8 @@ div#memory_board{
 	margin:0px auto;
 }
 div#memory_board > div{
-	background: url("https://images.unsplash.com/photo-1484244233201-29892afe6a2c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=2db8de5b9f0478ba59dfd9d61f4d64fe&auto=format&fit=crop&w=2550&q=80") no-repeat;
+    background: url("assets/codesmith.png") no-repeat;
+    background-size: 100%;
 	border:#000 1px solid;
 	width:71px;
 	height:71px;
