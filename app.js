@@ -19,13 +19,19 @@ function newBoard(){
 	tiles_flipped = 0;
 	var output = '';
     memory_array.memory_tile_shuffle();
-	for(var i = 0; i < memory_array.length; i++){
+	// for(var i = 0; i < memory_array.length; i++){
+	// 	output += '<div id="tile_'+i+'" onclick="memoryFlipTile(this,\''+memory_array[i]+'\')"></div>';
+	// }
+    // document.getElementById('memory_board').innerHTML = output;
+    
+    for(var i = 0; i < memory_array.length; i++){
         output += '<div id="tile_'+i+'"></div>';
     }
     document.getElementById('memory_board').innerHTML = output;
-    for(var i = 0; i < memory_array.length; i++){
-        let current = "tile_" + i;
-        document.getElementById(current).addEventListener("click", memoryFlipTile(this, memory_array[i])); 
+    for(var j = 0; j < memory_array.length; j++){
+        document.getElementById("tile_"+j).addEventListener("click", function() {
+            memoryFlipTile(this, memory_array[j])
+        }); 
     }
 }
 function memoryFlipTile(tile,val){
