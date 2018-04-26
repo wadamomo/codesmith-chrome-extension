@@ -30,33 +30,45 @@ function newBoard(){
     document.getElementById('memory_board').innerHTML = output;
     for(var j = 0; j < memory_array.length; j++){
         document.getElementById("tile_"+j).addEventListener("click", function() {
+			console.log(`Flip this: ${this}`);
             memoryFlipTile(this, memory_array[j])
         }); 
     }
 }
-function memoryFlipTile(tile,val){
-	if(tile.innerHTML == "" && memory_values.length < 2){
-		tile.style.background = '#FFF';
-		tile.innerHTML = val;
-		if(memory_values.length == 0){
+function memoryFlipTile(tile, val) {
+
+	if (tile.innerHTML == "" && memory_values.length < 2) {
+		console.log(`Set value: ${val}`);
+
+		if (memory_values.length == 0) {
+
 			memory_values.push(val);
 			memory_tile_ids.push(tile.id);
-		} else if(memory_values.length == 1){
+
+		}
+		else if (memory_values.length == 1) {
+
 			memory_values.push(val);
 			memory_tile_ids.push(tile.id);
-			if(memory_values[0] == memory_values[1]){
+
+			if (memory_values[0] == memory_values[1]) {
+
 				tiles_flipped += 2;
+
 				// Clear both arrays
 				memory_values = [];
-            	memory_tile_ids = [];
+				memory_tile_ids = [];
+				
 				// Check to see if the whole board is cleared
-				if(tiles_flipped == memory_array.length){
+				if (tiles_flipped == memory_array.length) {
 					alert("Board cleared... generating new board");
 					document.getElementById('memory_board').innerHTML = "";
 					newBoard();
 				}
-			} else {
-				function flip2Back(){
+			}
+			else {
+				console.log("BBB");
+				function flip2Back() {
 				    // Flip the 2 tiles back over
 				    var tile_1 = document.getElementById(memory_tile_ids[0]);
 				    var tile_2 = document.getElementById(memory_tile_ids[1]);

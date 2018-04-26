@@ -1,8 +1,8 @@
 div#memory_board{
 	/* background:#CCC; */
 	/* border:#999 1px solid; */
-	width:800px;
-	height:540px;
+	width:50%;
+	height:100%;
 	padding:24px;
 	margin:0px auto;
 }
@@ -19,7 +19,7 @@ div#memory_board > div{
 	font-size:64px;
 	cursor:pointer;
     text-align:center;
-    border-radius: 6px;
+    border-radius: 0git px;
     box-shadow: 0px 0px 16px rgba(0, 0, 100, 0.25);
 }
 
